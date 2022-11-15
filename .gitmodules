@@ -1,0 +1,6 @@
+[submodule "tests/Autoload"]
+	path = tests/Autoload
+	url = git@github.com:slpAkkie/php-class-autoloader
+[submodule "tests/TestModule"]
+	path = tests/TestModule
+	url = git@github.com:slpAkkie/php-test-module
