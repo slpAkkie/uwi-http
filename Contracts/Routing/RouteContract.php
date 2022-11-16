@@ -7,10 +7,11 @@ interface RouteContract
     /**
      * TODO: Undocumented function
      *
+     * @param string $method
      * @param string $uriTemplate
      * @param callable $handler
      */
-    public function __construct(string $uriTemplate, callable $handler);
+    public function __construct(string $method, string $uriTemplate, callable $handler);
 
     /**
      * TODO: Undocumented function
@@ -48,4 +49,11 @@ interface RouteContract
      * @return string
      */
     public function getUriTemplateAsString(): string;
+
+    /**
+     * TODO: Undocumented function
+     *
+     * @return string
+     */
+    public function getMethod(): string;
 }

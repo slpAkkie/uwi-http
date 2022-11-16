@@ -2,49 +2,57 @@
 
 namespace Framework\Services\Http\Contracts\Response;
 
-use Framework\Services\Http\Contracts\Requests\RequestContract;
-
 interface HttpResponseContract
 {
     /**
      * Инициализация объекта.
      *
-     * @param \Framework\Services\Http\Contracts\Requests\RequestContract $request
-     * @param string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract|null $data
+     * @param null|string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
      * @param int $responseCode
      */
-    public function __construct(RequestContract $request, string|array|ResponsableContract|null $data = null, int $responseCode);
+    public function __construct(null|string|array|ResponsableContract $data = null, int $responseCode);
 
     /**
      * Получить или установить код ответа.
      *
-     * @param integer|null $statusCode
-     * @return \Framework\Services\Http\Contracts\Response\HttpResponseContract
+     * @param int|null $responseCode
+     * @return int
      */
-    public function statusCode(int|null $statusCode = null): \Framework\Services\Http\Contracts\Response\HttpResponseContract;
+    public function responseCode(int|null $responseCode = null): int;
+
+    /**
+     * Устанавить заголовок ответа.
+     *
+     * @return static
+     */
+    public function setHeader(string $header, string $val): static;
 
     /**
      * Установить тип ответа на JSON.
      *
-     * @param array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
-     * @param int $responseCode
-     * @return \Framework\Services\Http\Contracts\Response\HttpResponseContract
+     * @return static
      */
-    public function json(array|ResponsableContract $data = null, int $responseCode = null): \Framework\Services\Http\Contracts\Response\HttpResponseContract;
+    public function json(): static;
 
     /**
      * Установить тип ответа на HTML страницу.
      *
-     * @param string|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
-     * @param int $responseCode
-     * @return \Framework\Services\Http\Contracts\Response\HttpResponseContract
+     * @return static
      */
-    public function html(string|ResponsableContract $data = null, int $responseCode = null): \Framework\Services\Http\Contracts\Response\HttpResponseContract;
+    public function html(): static;
 
     /**
-     * Отправить ответ клиенту.
+     * Установить данные для ответа.
      *
-     * @return void
+     * @param null|string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
+     * @return static
      */
-    public function send(): void;
+    public function setData(null|string|array|ResponsableContract $data): static;
+
+    /**
+     * Возвращает данные в форме, которую можно отправить в ответ.
+     *
+     * @return string
+     */
+    public function getResponsableData(): string;
 }

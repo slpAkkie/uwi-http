@@ -2,118 +2,72 @@
 
 namespace Framework\Services\Http\Response;
 
-use Framework\Services\Http\Contracts\Requests\RequestContract;
 use Framework\Services\Http\Contracts\Response\HttpResponseContract;
 use Framework\Services\Http\Contracts\Response\ResponsableContract;
 
 class HttpResponse implements HttpResponseContract
 {
     /**
-     * Код ответа по умолчанию.
-     */
-    protected const DEFAULT_RESPONSE_CODE = 200;
-
-    /**
-     * Список заголовков для ответа.
-     *
-     * @var array<string, string>
-     */
-    protected array $headers = [];
-
-    /**
      * Инициализация объекта.
      *
-     * @param \Framework\Services\Http\Contracts\Requests\RequestContract $request
-     * @param string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data|null
+     * @param null|string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
      * @param int $responseCode
      */
     public function __construct(
         /**
-         * TODO: Undocumented variable
+         * Данные ответа.
          *
-         * @var RequestContract
+         * @var string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract
          */
-        protected RequestContract $request,
+        protected null|string|array|ResponsableContract $data = null,
         /**
-         * TODO: Undocumented variable
+         * Код ответа.
          *
-         * @var string|array|ResponsableContract|null
+         * @var string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract
          */
-        protected string|array|ResponsableContract|null $data = null,
-        /**
-         * TODO: Undocumented variable
-         *
-         * @var string|array|ResponsableContract
-         */
-        protected int $responseCode = self::DEFAULT_RESPONSE_CODE,
+        protected int $responseCode,
     ) {
-        //
+        $this->setData($data);
+        $this->responseCode($responseCode);
     }
 
     /**
      * Получить или установить код ответа.
      *
-     * @param integer|null $statusCode
-     * @return \Framework\Services\Http\Contracts\Response\HttpResponseContract
+     * @param int|null $statusCode
+     * @return int
      */
-    public function statusCode(int|null $statusCode = null): \Framework\Services\Http\Contracts\Response\HttpResponseContract
+    public function responseCode(int|null $responseCode = null): int
     {
-        if (!is_null($statusCode)) {
-            $this->responseCode = $statusCode;
+        if (!is_null($responseCode)) {
+            $this->responseCode = $responseCode;
+
+            http_response_code($this->responseCode);
         }
+
+        return $this->responseCode;
+    }
+
+    /**
+     * Устанавить заголовок ответа.
+     *
+     * @return static
+     */
+    public function setHeader(string $header, string $val): static
+    {
+        header("$header: $val");
 
         return $this;
     }
 
     /**
-     * Добавить заголовок к ответу.
-     *
-     * @param string $header
-     * @param string $val
-     * @return void
-     */
-    protected function pushHeader(string $header, string $val): void
-    {
-        $this->headers[$header] = $val;
-    }
-
-    /**
-     * Установить добавленные заголовки для ответа.
-     *
-     * @return void
-     */
-    protected function setHeaders(): void
-    {
-        http_response_code($this->responseCode);
-        $this->statusCode();
-
-        foreach ($this->headers as $header => $val) {
-            $this->setHeader($header, $val);
-        }
-    }
-
-    /**
-     * Установить заголовок для ответа.
-     *
-     * @return void
-     */
-    protected function setHeader(string $header, string $val): void
-    {
-        header("$header: $val");
-    }
-
-    /**
      * Установить тип ответа на JSON.
      *
-     * @param array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
-     * @param int $responseCode
-     * @return \Framework\Services\Http\Contracts\Response\HttpResponseContract
+     * @return static
      */
-    public function json(array|ResponsableContract $data = null, int $responseCode = null): \Framework\Services\Http\Contracts\Response\HttpResponseContract
+    public function json(): static
     {
-        $this->data = json_encode($data ?? $this->data ?? []);
-        $this->pushHeader('Content-Type', 'application/json');
-        $this->statusCode($responseCode);
+        $this->setHeader('Content-Type', 'application/json');
 
         return $this;
     }
@@ -121,49 +75,41 @@ class HttpResponse implements HttpResponseContract
     /**
      * Установить тип ответа на HTML страницу.
      *
-     * @param string|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
-     * @param int $responseCode
-     * @return \Framework\Services\Http\Contracts\Response\HttpResponseContract
+     * @return static
      */
-    public function html(string|ResponsableContract $data = null, int $responseCode = null): \Framework\Services\Http\Contracts\Response\HttpResponseContract
+    public function html(): static
     {
-        $this->data = $data ?? $this->data;
-        $this->pushHeader('Content-Type', 'text/html');
-        $this->statusCode($responseCode ?? self::DEFAULT_RESPONSE_CODE);
+        $this->setHeader('Content-Type', 'text/html');
 
         return $this;
     }
 
     /**
-     * Подготовить данные для отправки.
+     * Установить данные для ответа.
      *
-     * Данные ответа преобразовываются в строку.
-     *
-     * @return void
+     * @param null|string|array|ResponsableContract $data
+     * @return static
      */
-    protected function prepareData(): void
+    public function setData(null|string|array|ResponsableContract $data): static
     {
-        $response = is_subclass_of($this->data, ResponsableContract::class)
-            ? $this->data->toResponse($this->request)
-            : $this->data;
+        $this->data = $data;
 
-        if (is_string($response)) {
-            $this->html($response);
-        } else {
-            $this->json($response);
-        }
+        return $this;
     }
 
     /**
-     * Отправить ответ клиенту.
+     * Возвращает данные в форме, которую можно отправить в ответ.
      *
-     * @return void
+     * @return string
      */
-    public function send(): void
+    public function getResponsableData(): string
     {
-        $this->prepareData();
-        $this->setHeaders();
+        $responsableData = is_subclass_of($this->data, ResponsableContract::class)
+            ? $this->data->toResponse()
+            : $this->data;
 
-        echo $this->data;
+        return !is_null($responsableData) && !is_string($responsableData)
+            ? json_encode($responsableData)
+            : $responsableData;
     }
 }

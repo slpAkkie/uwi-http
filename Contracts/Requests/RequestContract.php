@@ -19,13 +19,13 @@ interface RequestContract
     public function session(): \Framework\Services\Http\Contracts\Sessions\SessionContract;
 
     /**
-     * Возвращает значение HTTP заголовка Accept.
+     * Возвращает значение HTTP заголовка Accept в виде массива.
      *
      * Указывает какие типа контента принимает клиент в ответ на запрос.
      *
-     * @return string
+     * @return array
      */
-    public function accepts(): string;
+    public function accepts(): array;
 
 
     /**

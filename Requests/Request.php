@@ -53,15 +53,17 @@ class Request implements RequestContract
     }
 
     /**
-     * Возвращает значение HTTP заголовка Accept.
+     * Возвращает значение HTTP заголовка Accept в виде массива.
      *
      * Указывает какие типа контента принимает клиент в ответ на запрос.
      *
-     * @return string
+     * @return array
      */
-    public function accepts(): string
+    public function accepts(): array
     {
-        return $_SERVER['HTTP_ACCEPT'];
+        return array_map(function ($mime) {
+            return explode(';', $mime)[0];
+        }, explode(',', $_SERVER['HTTP_ACCEPT']));
     }
 
 

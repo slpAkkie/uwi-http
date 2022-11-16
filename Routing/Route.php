@@ -23,6 +23,13 @@ class Route implements RouteContract
     /**
      * TODO: Undocumented variable
      *
+     * @var string
+     */
+    protected mixed $method;
+
+    /**
+     * TODO: Undocumented variable
+     *
      * @var array<string, string>
      */
     protected array $args = [];
@@ -30,13 +37,16 @@ class Route implements RouteContract
     /**
      * TODO: Undocumented function
      *
+     * @param string $method
      * @param string $uriTemplate
      * @param callable $handler
      */
     public function __construct(
+        string $method,
         string $uriTemplate,
         callable $handler,
     ) {
+        $this->method = strtoupper($method);
         $this->uriTemplate = new Uri($uriTemplate);
         $this->handler = $handler;
     }
@@ -98,5 +108,15 @@ class Route implements RouteContract
     public function getUriTemplateAsString(): string
     {
         return (string)$this->uriTemplate;
+    }
+
+    /**
+     * TODO: Undocumented function
+     *
+     * @return string
+     */
+    public function getMethod(): string
+    {
+        return $this->method;
     }
 }

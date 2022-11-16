@@ -12,8 +12,6 @@ class HttpModuleUnitTest
     protected array $testClasses = [
         SessionUnitTest::class,
         CookieUnitTest::class,
-        RequestUnitTest::class,
-        ResponseUnitTest::class,
         RoutingUnitTest::class,
     ];
 

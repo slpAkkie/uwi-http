@@ -51,7 +51,7 @@ class Router implements RouterContract
     public function getRouteForRequest(): ?\Framework\Services\Http\Routing\Route
     {
         foreach ($this->routes as $route) {
-            if ($route->getUriTemplate()->equalTo($this->request->uri())) {
+            if ($route->getUriTemplate()->equalTo($this->request->uri()) && $route->getMethod() === $this->request->method()) {
                 $route->extractTemplateArgs($this->request->uri());
                 return $route;
             }
