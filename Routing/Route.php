@@ -3,6 +3,7 @@
 namespace Services\Http\Routing;
 
 use Services\Http\Contracts\Routing\RouteContract;
+use Services\Http\Contracts\Routing\UriContract;
 
 class Route implements RouteContract
 {
@@ -11,7 +12,7 @@ class Route implements RouteContract
      *
      * @var mixed
      */
-    protected \Services\Http\Routing\Uri $uriTemplate;
+    protected UriContract $uriTemplate;
 
     /**
      * TODO: Undocumented variable
@@ -93,9 +94,9 @@ class Route implements RouteContract
     /**
      * TODO: Undocumented function
      *
-     * @return \Services\Http\Routing\Uri
+     * @return \Services\Http\Contracts\Routing\UriContract
      */
-    public function getUriTemplate(): \Services\Http\Routing\Uri
+    public function getUriTemplate(): \Services\Http\Contracts\Routing\UriContract
     {
         return $this->uriTemplate;
     }

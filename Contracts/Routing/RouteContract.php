@@ -39,9 +39,9 @@ interface RouteContract
     /**
      * TODO: Undocumented function
      *
-     * @return \Services\Http\Routing\Uri
+     * @return \Services\Http\Contracts\Routing\UriContract
      */
-    public function getUriTemplate(): \Services\Http\Routing\Uri;
+    public function getUriTemplate(): \Services\Http\Contracts\Routing\UriContract;
 
     /**
      * TODO: Undocumented function

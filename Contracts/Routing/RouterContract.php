@@ -2,30 +2,29 @@
 
 namespace Services\Http\Contracts\Routing;
 
-use Services\Http\Requests\Request;
-use Services\Http\Routing\Route;
+use Services\Http\Contracts\Requests\RequestContract;
 
 interface RouterContract
 {
     /**
      * TODO: Undocumented function
      *
-     * @param \Services\Http\Requests\Request $request
+     * @param \Services\Http\Contracts\Requests\RequestContract $request
      */
-    public function __construct(Request $request);
+    public function __construct(RequestContract $request);
 
     /**
      * TODO: Undocumented function
      *
-     * @param \Services\Http\Routing\Route $route
-     * @return \Services\Http\Routing\Route
+     * @param \Services\Http\Contracts\Routing\RouteContract $route
+     * @return \Services\Http\Contracts\Routing\RouteContract
      */
-    public function addRoute(Route $route): \Services\Http\Routing\Route;
+    public function addRoute(RouteContract $route): \Services\Http\Contracts\Routing\RouteContract;
 
     /**
      * TODO: Undocumented function
      *
-     * @return \Services\Http\Routing\Route|null
+     * @return \Services\Http\Contracts\Routing\RouteContract|null
      */
-    public function getRouteForRequest(): ?\Services\Http\Routing\Route;
+    public function getRouteForRequest(): ?\Services\Http\Contracts\Routing\RouteContract;
 }

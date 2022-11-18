@@ -2,30 +2,31 @@
 
 namespace Services\Http\Routing;
 
+use Services\Http\Contracts\Requests\RequestContract;
+use Services\Http\Contracts\Routing\RouteContract;
 use Services\Http\Contracts\Routing\RouterContract;
-use Services\Http\Requests\Request;
 
 class Router implements RouterContract
 {
     /**
      * TODO: Undocumented variable
      *
-     * @var array<\Services\Http\Routing\Route>
+     * @var array<\Services\Http\Contracts\Routing\RouteContract>
      */
     protected array $routes = [];
 
     /**
      * TODO: Undocumented function
      *
-     * @param \Services\Http\Requests\Request $request
+     * @param \Services\Http\Contracts\Requests\RequestContract $request
      */
     public function __construct(
         /**
          * TODO: Undocumented variable
          *
-         * @var \Services\Http\Requests\Request
+         * @var \Services\Http\Contracts\Requests\RequestContract
          */
-        protected Request $request
+        protected RequestContract $request
     ) {
         //
     }
@@ -33,10 +34,10 @@ class Router implements RouterContract
     /**
      * TODO: Undocumented function
      *
-     * @param \Services\Http\Routing\Route $route
-     * @return \Services\Http\Routing\Route
+     * @param \Services\Http\Contracts\Routing\RouteContract $route
+     * @return \Services\Http\Contracts\Routing\RouteContract
      */
-    public function addRoute(Route $route): \Services\Http\Routing\Route
+    public function addRoute(RouteContract $route): \Services\Http\Contracts\Routing\RouteContract
     {
         $this->routes[] = $route;
 
@@ -46,9 +47,9 @@ class Router implements RouterContract
     /**
      * TODO: Undocumented function
      *
-     * @return \Services\Http\Routing\Route|null
+     * @return \Services\Http\Contracts\Routing\RouteContract|null
      */
-    public function getRouteForRequest(): ?\Services\Http\Routing\Route
+    public function getRouteForRequest(): ?\Services\Http\Contracts\Routing\RouteContract
     {
         foreach ($this->routes as $route) {
             if ($route->getUriTemplate()->equalTo($this->request->uri()) && $route->getMethod() === $this->request->method()) {
