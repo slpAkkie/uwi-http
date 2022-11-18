@@ -54,7 +54,16 @@ class RoutingUnitTest
     protected function executeCurrentRouteHandler(...$args): string
     {
         $route = $this->router->getRouteForRequest();
-        return is_null($route) ? null : $route->getHandler()(...$args);
+        if (is_null($route)) {
+            return null;
+        }
+
+        $handler = $route->getHandler();
+        if (is_array($handler) && is_string($handler[0])) {
+            return (new $handler[0]())->{$handler[1]}(...$args);
+        }
+
+        return $handler(...$args);
     }
 
     public function all(): void
@@ -95,7 +104,7 @@ class RoutingUnitTest
             desc: 'Обработчиком является метод класса',
             test: function () {
                 Test::assertNonException(function () {
-                    $this->router->addRoute(new Route('get', '/', Controller::class . '::root'));
+                    $this->router->addRoute(new Route('get', '/', [Controller::class, 'root']));
                 });
             }
         );
@@ -170,7 +179,7 @@ class RoutingUnitTest
 
 class Controller
 {
-    public static function root()
+    public function root()
     {
         return 'root';
     }

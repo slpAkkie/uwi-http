@@ -9,16 +9,16 @@ interface RouteContract
      *
      * @param string $method
      * @param string $uriTemplate
-     * @param callable $handler
+     * @param mixed $handler
      */
-    public function __construct(string $method, string $uriTemplate, callable $handler);
+    public function __construct(string $method, string $uriTemplate, mixed $handler);
 
     /**
      * TODO: Undocumented function
      *
-     * @return callable
+     * @return mixed
      */
-    public function getHandler(): callable;
+    public function getHandler(): mixed;
 
     /**
      * TODO: Undocumented function

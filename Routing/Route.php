@@ -40,12 +40,12 @@ class Route implements RouteContract
      *
      * @param string $method
      * @param string $uriTemplate
-     * @param callable $handler
+     * @param mixed $handler
      */
     public function __construct(
         string $method,
         string $uriTemplate,
-        callable $handler,
+        mixed $handler,
     ) {
         $this->method = strtoupper($method);
         $this->uriTemplate = new Uri($uriTemplate);
@@ -55,9 +55,9 @@ class Route implements RouteContract
     /**
      * TODO: Undocumented function
      *
-     * @return callable
+     * @return mixed
      */
-    public function getHandler(): callable
+    public function getHandler(): mixed
     {
         return $this->handler;
     }
