@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Services\Http\Contracts\Routing;
+namespace Services\Http\Contracts\Routing;
 
 interface UriContract
 {

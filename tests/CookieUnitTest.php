@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Services\Http\Cookies\Cookie;
+use Services\Http\Cookies\Cookie;
 use TestModule\Test;
 
 class CookieUnitTest

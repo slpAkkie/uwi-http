@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Services\Http\Contracts\Cookies;
+namespace Services\Http\Contracts\Cookies;
 
 interface CookieContract
 {

@@ -1,12 +1,12 @@
 <?php
 
-use Framework\Services\Http\Contracts\Requests\RequestContract;
-use Framework\Services\Http\Contracts\Routing\RouteContract;
-use Framework\Services\Http\Contracts\Routing\RouterContract;
-use Framework\Services\Http\Requests\Request;
-use Framework\Services\Http\Response\HttpResponse;
-use Framework\Services\Http\Routing\Route;
-use Framework\Services\Http\Routing\Router;
+use Services\Http\Contracts\Requests\RequestContract;
+use Services\Http\Contracts\Routing\RouteContract;
+use Services\Http\Contracts\Routing\RouterContract;
+use Services\Http\Requests\Request;
+use Services\Http\Response\HttpResponse;
+use Services\Http\Routing\Route;
+use Services\Http\Routing\Router;
 use TestModule\Test;
 
 class RoutingUnitTest

@@ -1,35 +1,35 @@
 <?php
 
-namespace Framework\Services\Http\Requests;
+namespace Services\Http\Requests;
 
-use Framework\Services\Http\Contracts\Cookies\CookieContract;
-use Framework\Services\Http\Contracts\Requests\RequestContract;
-use Framework\Services\Http\Contracts\Sessions\SessionContract;
-use Framework\Services\Http\Cookies\Cookie;
-use Framework\Services\Http\Sessions\Session;
+use Services\Http\Contracts\Cookies\CookieContract;
+use Services\Http\Contracts\Requests\RequestContract;
+use Services\Http\Contracts\Sessions\SessionContract;
+use Services\Http\Cookies\Cookie;
+use Services\Http\Sessions\Session;
 
 class Request implements RequestContract
 {
     /**
      * Объект сессии.
      *
-     * @var \Framework\Services\Http\Contracts\Sessions\SessionContract
+     * @var \Services\Http\Contracts\Sessions\SessionContract
      */
     protected SessionContract $_session;
 
     /**
      * Объект Куки.
      *
-     * @var \Framework\Services\Http\Contracts\Cookies\CookieContract
+     * @var \Services\Http\Contracts\Cookies\CookieContract
      */
     protected CookieContract $_cookie;
 
     /**
      * Получить объект Куки.
      *
-     * @return \Framework\Services\Http\Contracts\Cookies\CookieContract
+     * @return \Services\Http\Contracts\Cookies\CookieContract
      */
-    public function cookie(): \Framework\Services\Http\Contracts\Cookies\CookieContract
+    public function cookie(): \Services\Http\Contracts\Cookies\CookieContract
     {
         if (is_null($this->_cookie)) {
             $this->_cookie = new Cookie();
@@ -41,9 +41,9 @@ class Request implements RequestContract
     /**
      * Получить объект Сессии.
      *
-     * @return \Framework\Services\Http\Contracts\Sessions\SessionContract
+     * @return \Services\Http\Contracts\Sessions\SessionContract
      */
-    public function session(): \Framework\Services\Http\Contracts\Sessions\SessionContract
+    public function session(): \Services\Http\Contracts\Sessions\SessionContract
     {
         if (is_null($this->_session)) {
             $this->_session = new Session();

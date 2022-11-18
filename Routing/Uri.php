@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Services\Http\Routing;
+namespace Services\Http\Routing;
 
-use Framework\Services\Http\Contracts\Routing\UriContract;
+use Services\Http\Contracts\Routing\UriContract;
 
 class Uri implements UriContract
 {

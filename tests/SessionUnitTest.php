@@ -1,7 +1,7 @@
 <?php
 
-use Framework\Services\Http\Contracts\Sessions\SessionContract;
-use Framework\Services\Http\Sessions\Session;
+use Services\Http\Contracts\Sessions\SessionContract;
+use Services\Http\Sessions\Session;
 use TestModule\Test;
 
 class SessionUnitTest

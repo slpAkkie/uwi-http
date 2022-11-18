@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Services\Http\Routing;
+namespace Services\Http\Routing;
 
-use Framework\Services\Http\Contracts\Routing\RouteContract;
+use Services\Http\Contracts\Routing\RouteContract;
 
 class Route implements RouteContract
 {
@@ -11,7 +11,7 @@ class Route implements RouteContract
      *
      * @var mixed
      */
-    protected \Framework\Services\Http\Routing\Uri $uriTemplate;
+    protected \Services\Http\Routing\Uri $uriTemplate;
 
     /**
      * TODO: Undocumented variable
@@ -93,9 +93,9 @@ class Route implements RouteContract
     /**
      * TODO: Undocumented function
      *
-     * @return \Framework\Services\Http\Routing\Uri
+     * @return \Services\Http\Routing\Uri
      */
-    public function getUriTemplate(): \Framework\Services\Http\Routing\Uri
+    public function getUriTemplate(): \Services\Http\Routing\Uri
     {
         return $this->uriTemplate;
     }

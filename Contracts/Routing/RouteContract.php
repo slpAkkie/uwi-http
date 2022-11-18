@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Services\Http\Contracts\Routing;
+namespace Services\Http\Contracts\Routing;
 
 interface RouteContract
 {
@@ -39,9 +39,9 @@ interface RouteContract
     /**
      * TODO: Undocumented function
      *
-     * @return \Framework\Services\Http\Routing\Uri
+     * @return \Services\Http\Routing\Uri
      */
-    public function getUriTemplate(): \Framework\Services\Http\Routing\Uri;
+    public function getUriTemplate(): \Services\Http\Routing\Uri;
 
     /**
      * TODO: Undocumented function

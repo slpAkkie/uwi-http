@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Services\Http\Sessions;
+namespace Services\Http\Sessions;
 
-use Framework\Services\Http\Contracts\Sessions\SessionContract;
+use Services\Http\Contracts\Sessions\SessionContract;
 
 class Session implements SessionContract
 {

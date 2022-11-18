@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Services\Http\Cookies;
+namespace Services\Http\Cookies;
 
-use Framework\Services\Http\Contracts\Cookies\CookieContract;
+use Services\Http\Contracts\Cookies\CookieContract;
 
 class Cookie implements CookieContract
 {

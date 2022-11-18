@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Services\Http\Contracts\Response;
+namespace Services\Http\Contracts\Response;
 
 interface ResponsableContract
 {

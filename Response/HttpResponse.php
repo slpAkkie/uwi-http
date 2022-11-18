@@ -1,29 +1,29 @@
 <?php
 
-namespace Framework\Services\Http\Response;
+namespace Services\Http\Response;
 
-use Framework\Services\Http\Contracts\Response\HttpResponseContract;
-use Framework\Services\Http\Contracts\Response\ResponsableContract;
+use Services\Http\Contracts\Response\HttpResponseContract;
+use Services\Http\Contracts\Response\ResponsableContract;
 
 class HttpResponse implements HttpResponseContract
 {
     /**
      * Инициализация объекта.
      *
-     * @param null|string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
+     * @param null|string|array|\Services\Http\Contracts\Response\ResponsableContract $data
      * @param int $responseCode
      */
     public function __construct(
         /**
          * Данные ответа.
          *
-         * @var string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract
+         * @var string|array|\Services\Http\Contracts\Response\ResponsableContract
          */
         protected null|string|array|ResponsableContract $data = null,
         /**
          * Код ответа.
          *
-         * @var string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract
+         * @var string|array|\Services\Http\Contracts\Response\ResponsableContract
          */
         protected int $responseCode,
     ) {

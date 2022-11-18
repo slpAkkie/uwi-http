@@ -1,22 +1,22 @@
 <?php
 
-namespace Framework\Services\Http\Contracts\Requests;
+namespace Services\Http\Contracts\Requests;
 
 interface RequestContract
 {
     /**
      * Получить объект Куки.
      *
-     * @return \Framework\Services\Http\Contracts\Cookies\CookieContract
+     * @return \Services\Http\Contracts\Cookies\CookieContract
      */
-    public function cookie(): \Framework\Services\Http\Contracts\Cookies\CookieContract;
+    public function cookie(): \Services\Http\Contracts\Cookies\CookieContract;
 
     /**
      * Получить объект Сессии.
      *
-     * @return \Framework\Services\Http\Contracts\Sessions\SessionContract
+     * @return \Services\Http\Contracts\Sessions\SessionContract
      */
-    public function session(): \Framework\Services\Http\Contracts\Sessions\SessionContract;
+    public function session(): \Services\Http\Contracts\Sessions\SessionContract;
 
     /**
      * Возвращает значение HTTP заголовка Accept в виде массива.

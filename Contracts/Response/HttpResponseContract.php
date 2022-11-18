@@ -1,13 +1,13 @@
 <?php
 
-namespace Framework\Services\Http\Contracts\Response;
+namespace Services\Http\Contracts\Response;
 
 interface HttpResponseContract
 {
     /**
      * Инициализация объекта.
      *
-     * @param null|string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
+     * @param null|string|array|\Services\Http\Contracts\Response\ResponsableContract $data
      * @param int $responseCode
      */
     public function __construct(null|string|array|ResponsableContract $data = null, int $responseCode);
@@ -44,7 +44,7 @@ interface HttpResponseContract
     /**
      * Установить данные для ответа.
      *
-     * @param null|string|array|\Framework\Services\Http\Contracts\Response\ResponsableContract $data
+     * @param null|string|array|\Services\Http\Contracts\Response\ResponsableContract $data
      * @return static
      */
     public function setData(null|string|array|ResponsableContract $data): static;
