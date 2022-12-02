@@ -5,7 +5,7 @@ namespace Services\Http\Contracts\Routing;
 interface RouteContract
 {
     /**
-     * TODO: Undocumented function
+     * Инициализировать новый маршрут.
      *
      * @param string $method
      * @param string $uriTemplate
@@ -14,14 +14,14 @@ interface RouteContract
     public function __construct(string $method, string $uriTemplate, mixed $handler);
 
     /**
-     * TODO: Undocumented function
+     * Возвращает обработчик маршрута.
      *
      * @return mixed
      */
     public function getHandler(): mixed;
 
     /**
-     * TODO: Undocumented function
+     * Извлечь аргументы из URI строки по шаблону маршрута.
      *
      * @param string $uri
      * @return void
@@ -29,7 +29,7 @@ interface RouteContract
     public function extractTemplateArgs(string $uri): void;
 
     /**
-     * TODO: Undocumented function
+     * Получить аргумент по его имени.
      *
      * @param string $argName
      * @return mixed
@@ -37,21 +37,21 @@ interface RouteContract
     public function get(string $argName): mixed;
 
     /**
-     * TODO: Undocumented function
+     * Получить шаблон URI строки маршрута.
      *
      * @return \Services\Http\Contracts\Routing\UriContract
      */
     public function getUriTemplate(): \Services\Http\Contracts\Routing\UriContract;
 
     /**
-     * TODO: Undocumented function
+     * Получить шаблон URI строки маршрута как строку.
      *
      * @return string
      */
     public function getUriTemplateAsString(): string;
 
     /**
-     * TODO: Undocumented function
+     * Получить метод, по которому доступен маршрут.
      *
      * @return string
      */

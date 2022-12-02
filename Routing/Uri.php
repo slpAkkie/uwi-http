@@ -7,14 +7,14 @@ use Services\Http\Contracts\Routing\UriContract;
 class Uri implements UriContract
 {
     /**
-     * TODO: Undocumented variable
+     * URI cтрока шаблона запроса.
      *
      * @var string
      */
     protected string $uriTemplate;
 
     /**
-     * TODO: Undocumented function
+     * Инициализация нового объекта.
      *
      * @param string $uriTemplate
      */
@@ -25,13 +25,14 @@ class Uri implements UriContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Сравнивает URI на то, подходит ли он под шаблон.
      *
      * @param string $uriToCompare
      * @return boolean
      */
     public function equalTo(string $uriToCompare): bool
     {
+        // Собираем из шаблона регулярные выражения.
         $routeUri = '/^' . preg_replace(
             ['/\{[^\}]+\}/', '/\//'],
             ['(.*)', '\\/'],
@@ -42,7 +43,7 @@ class Uri implements UriContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Унифицирует URI строку, добавляет слэш в начале и убирает в конце.
      *
      * @param string $uri
      * @return string
@@ -61,7 +62,7 @@ class Uri implements UriContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Возвращает шаблон при попытке приведения к строке.
      *
      * @return string
      */

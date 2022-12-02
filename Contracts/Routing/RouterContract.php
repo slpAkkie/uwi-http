@@ -7,14 +7,14 @@ use Services\Http\Contracts\Requests\RequestContract;
 interface RouterContract
 {
     /**
-     * TODO: Undocumented function
+     * Инициализировать новый маршрутизатор.
      *
      * @param \Services\Http\Contracts\Requests\RequestContract $request
      */
     public function __construct(RequestContract $request);
 
     /**
-     * TODO: Undocumented function
+     * Добавить новый маршрут.
      *
      * @param \Services\Http\Contracts\Routing\RouteContract $route
      * @return \Services\Http\Contracts\Routing\RouteContract
@@ -22,7 +22,7 @@ interface RouterContract
     public function addRoute(RouteContract $route): \Services\Http\Contracts\Routing\RouteContract;
 
     /**
-     * TODO: Undocumented function
+     * Получить маршрут для запроса.
      *
      * @return \Services\Http\Contracts\Routing\RouteContract|null
      */

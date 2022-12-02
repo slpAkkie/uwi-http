@@ -8,35 +8,35 @@ use Services\Http\Contracts\Routing\UriContract;
 class Route implements RouteContract
 {
     /**
-     * TODO: Undocumented variable
+     * Шаблон URI которому соответствует маршрут.
      *
      * @var mixed
      */
     protected UriContract $uriTemplate;
 
     /**
-     * TODO: Undocumented variable
+     * Обработчик маршрута.
      *
      * @var mixed
      */
     protected mixed $handler;
 
     /**
-     * TODO: Undocumented variable
+     * HTTP метод, которым был отправлен запрос.
      *
      * @var string
      */
     protected mixed $method;
 
     /**
-     * TODO: Undocumented variable
+     * Аргументы URI строки по шаблону.
      *
      * @var array<string, string>
      */
     protected array $args = [];
 
     /**
-     * TODO: Undocumented function
+     * Инициализировать новый маршрут.
      *
      * @param string $method
      * @param string $uriTemplate
@@ -53,7 +53,7 @@ class Route implements RouteContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Возвращает обработчик маршрута.
      *
      * @return mixed
      */
@@ -63,7 +63,7 @@ class Route implements RouteContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Извлечь аргументы из URI строки по шаблону маршрута.
      *
      * @param string $uri
      * @return void
@@ -81,7 +81,7 @@ class Route implements RouteContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Получить аргумент по его имени.
      *
      * @param string $argName
      * @return mixed
@@ -92,7 +92,7 @@ class Route implements RouteContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Получить шаблон URI строки маршрута.
      *
      * @return \Services\Http\Contracts\Routing\UriContract
      */
@@ -102,7 +102,7 @@ class Route implements RouteContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Получить шаблон URI строки маршрута как строку.
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class Route implements RouteContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Получить метод, по которому доступен маршрут.
      *
      * @return string
      */

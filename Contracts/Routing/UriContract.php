@@ -5,14 +5,14 @@ namespace Services\Http\Contracts\Routing;
 interface UriContract
 {
     /**
-     * TODO: Undocumented function
+     * Инициализация нового объекта.
      *
      * @param string $uriTemplate
      */
     public function __construct(string $uriTemplate);
 
     /**
-     * TODO: Undocumented function
+     * Сравнивает URI на то, подходит ли он под шаблон.
      *
      * @param string $uriToCompare
      * @return boolean
@@ -20,7 +20,7 @@ interface UriContract
     public function equalTo(string $uriToCompare): bool;
 
     /**
-     * TODO: Undocumented function
+     * Унифицирует URI строку, добавляет слэш в начале и убирает в конце.
      *
      * @param string $uri
      * @return string
@@ -28,7 +28,7 @@ interface UriContract
     public static function unify(string $uri): string;
 
     /**
-     * TODO: Undocumented function
+     * Возвращает шаблон при попытке приведения к строке.
      *
      * @return string
      */

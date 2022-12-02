@@ -9,20 +9,20 @@ use Services\Http\Contracts\Routing\RouterContract;
 class Router implements RouterContract
 {
     /**
-     * TODO: Undocumented variable
+     * Список маршрутов.
      *
      * @var array<\Services\Http\Contracts\Routing\RouteContract>
      */
     protected array $routes = [];
 
     /**
-     * TODO: Undocumented function
+     * Инициализировать новый маршрутизатор.
      *
      * @param \Services\Http\Contracts\Requests\RequestContract $request
      */
     public function __construct(
         /**
-         * TODO: Undocumented variable
+         * Объект запроса.
          *
          * @var \Services\Http\Contracts\Requests\RequestContract
          */
@@ -32,7 +32,7 @@ class Router implements RouterContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Добавить новый маршрут.
      *
      * @param \Services\Http\Contracts\Routing\RouteContract $route
      * @return \Services\Http\Contracts\Routing\RouteContract
@@ -45,7 +45,7 @@ class Router implements RouterContract
     }
 
     /**
-     * TODO: Undocumented function
+     * Получить маршрут для запроса.
      *
      * @return \Services\Http\Contracts\Routing\RouteContract|null
      */
