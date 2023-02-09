@@ -31,7 +31,7 @@ class Request implements RequestContract
      */
     public function cookie(): \Services\Http\Contracts\Cookies\CookieContract
     {
-        if (is_null($this->_cookie)) {
+        if (!isset($this->_cookie)) {
             $this->_cookie = new Cookie();
         }
 
@@ -45,7 +45,7 @@ class Request implements RequestContract
      */
     public function session(): \Services\Http\Contracts\Sessions\SessionContract
     {
-        if (is_null($this->_session)) {
+        if (!isset($this->_session)) {
             $this->_session = new Session();
         }
 
