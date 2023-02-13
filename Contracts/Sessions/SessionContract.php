@@ -92,7 +92,7 @@ interface SessionContract
      *
      * @return void
      */
-    public function destory(): void;
+    public function destroy(): void;
 
     /**
      * Перезапустить сессию.

@@ -159,7 +159,7 @@ class Session implements SessionContract
      *
      * @return void
      */
-    public function destory(): void
+    public function destroy(): void
     {
         $this->clear();
         session_destroy();
@@ -172,7 +172,7 @@ class Session implements SessionContract
      */
     public function regenerate(): void
     {
-        $this->destory();
+        $this->destroy();
         $this->start();
     }
 }
