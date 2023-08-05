@@ -7,13 +7,6 @@ use Services\Http\Contracts\Sessions\SessionContract;
 class Session implements SessionContract
 {
     /**
-     * Путь к дериктории для хранения файлов сессий по умолчанию.
-     *
-     * @var string
-     */
-    protected const DEFAULT_SESSIONS_PATH = APP_ROOT_PATH . '/storage/framework/sessions';
-
-    /**
      * Инициализация объекта сессии.
      *
      * @param ?string $sessionsPath
@@ -21,7 +14,8 @@ class Session implements SessionContract
     public function __construct(?string $sessionsPath = null)
     {
         ini_set('session.use_strict_mode', 1);
-        $this->usePath($sessionsPath ?? static::DEFAULT_SESSIONS_PATH);
+        if (!is_null($sessionsPath))
+            $this->usePath($sessionsPath);
     }
 
     /**
